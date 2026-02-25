@@ -1,27 +1,44 @@
-# CowCatalog
+# Cow Catalog Angular App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
+A simple Angular application to manage and browse cows in a farm catalog.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Cow list with tag, sex, pen, status and last event date
+- Search by ear tag
+- Filter by pen or status
+- Add new cow form with validation
+- Cow detail page with events timeline
+- Local storage persistence (no backend required)
 
-## Code scaffolding
+---
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Tech Stack
 
-## Build
+- Angular 18
+- Angular Material UI
+- TypeScript
+- LocalStorage for data persistence
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+## How to Run Locally
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 1. Clone repository
 
-## Running end-to-end tests
+```bash
+git clone https://github.com/ravigoyal-dev/cow-catalog.git
+cd cow-catalog
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2. Install dependencies
+npm install
 
-## Further help
+3. Run project
+npm start
+Open browser:
+http://localhost:4200
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+4. Build for Production
+npm run build
+Build output will be inside:
+dist/cow-catalog
