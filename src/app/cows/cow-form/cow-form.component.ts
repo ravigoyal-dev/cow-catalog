@@ -27,7 +27,7 @@ export class CowFormComponent {
   cowForm!: FormGroup; 
   ngOnInit() {
     this.cowForm = this.fb.group({
-      tag: ['', Validators.required],
+      tag: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       sex: ['', Validators.required],
       pen: ['', Validators.required],
       status: ['Active', Validators.required],
