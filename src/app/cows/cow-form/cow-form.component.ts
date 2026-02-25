@@ -6,7 +6,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
@@ -18,7 +17,7 @@ import { Router, RouterLink } from '@angular/router';
         MatSelectModule,
         MatButtonModule,
         MatCardModule,
-        ReactiveFormsModule,RouterLink],
+       ReactiveFormsModule,RouterLink],
   templateUrl: './cow-form.component.html',
   styleUrl: './cow-form.component.scss'
 })
@@ -27,7 +26,7 @@ export class CowFormComponent {
   cowForm!: FormGroup; 
   ngOnInit() {
     this.cowForm = this.fb.group({
-      tag: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      tag: ['', Validators.required],
       sex: ['', Validators.required],
       pen: ['', Validators.required],
       status: ['Active', Validators.required],
@@ -35,11 +34,10 @@ export class CowFormComponent {
     });
   }
 
- onSubmit() {
+onSubmit() {
   if (this.cowForm.invalid) return;
 
   const formValue = this.cowForm.value;
-
   const exists = this.cowService.findCow(formValue.tag);
   if (exists) {
     alert('Ear tag must be unique');

@@ -9,7 +9,7 @@ export class CowService {
     this.loadFromStorage();
   }
 
-  getCows(): Cow[] {
+getCows(): Cow[] {
   return [...this.cows];
 }
 
@@ -26,17 +26,8 @@ export class CowService {
     localStorage.setItem('cows', JSON.stringify(this.cows));
   }
 
-private loadFromStorage() {
-  const data = localStorage.getItem('cows');
-  if (data) {
-    this.cows = JSON.parse(data).map((c: any) => ({
-      ...c,
-      lastEventDate: new Date(c.lastEventDate),
-      events: c.events?.map((e: any) => ({
-        ...e,
-        date: new Date(e.date)
-      }))
-    }));
+  private loadFromStorage() {
+    const data = localStorage.getItem('cows');
+    if (data) this.cows = JSON.parse(data);
   }
-}
 }

@@ -79,8 +79,7 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row
-            *matRowDef="let row; columns: displayedColumns; trackBy: trackByTag"
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
             (click)="viewCow(row)">
         </tr>
 

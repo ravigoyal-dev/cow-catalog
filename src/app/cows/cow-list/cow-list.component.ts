@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component,ChangeDetectionStrategy } from '@angular/core';
 import { CowService } from '../cow.service';
 import { Cow } from '../cow.model';
 import { Router, RouterLink } from '@angular/router';
@@ -14,13 +14,13 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-cow-list',
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatFormFieldModule,
         MatInputModule,
         MatSelectModule,
         MatButtonModule,
-        MatCardModule
-        , MatToolbarModule, MatTableModule, FormsModule, RouterLink, CommonModule],
+        MatCardModule,
+        MatToolbarModule, MatTableModule, FormsModule, RouterLink, CommonModule],
   templateUrl: './cow-list.component.html',
   styleUrl: './cow-list.component.scss'
 })
@@ -51,28 +51,30 @@ export class CowListComponent {
 constructor(private cowService: CowService, private router: Router) {}
 
 filteredCows(): Cow[] {
-  const searchTagLower = this.searchTag?.trim().toLowerCase() || '';
-  const filterStatusLower = this.filterStatus?.trim().toLowerCase() || '';
-  const filterPenLower = this.filterPen?.trim().toLowerCase() || '';
+
+  const searchTagLower = (this.searchTag || '').trim().toLowerCase();
+  const filterStatusLower = (this.filterStatus || '').trim().toLowerCase();
+  const filterPenLower = (this.filterPen || '').trim().toLowerCase();
 
   return this.cowService.getCows().filter(cow => {
-    const tagLower = cow.tag.toLowerCase();
-    const statusLower = cow.status.toLowerCase();
-    const penLower = cow.pen.toLowerCase();
+
+    const tagLower = String(cow.tag ?? '').toLowerCase();
+    const statusLower = String(cow.status ?? '').toLowerCase();
+    const penLower = String(cow.pen ?? '').toLowerCase();
 
     return (
       (!searchTagLower || tagLower.includes(searchTagLower)) &&
       (!filterStatusLower || statusLower === filterStatusLower) &&
       (!filterPenLower || penLower.includes(filterPenLower))
     );
+
   });
 }
 
   viewCow(cow: Cow) {
     this.router.navigate(['/cow', cow.tag]);
   }
-
-  ngOnInit() {
+ngOnInit() {
   const saved = localStorage.getItem('cowFilters');
   if (saved) {
     const f = JSON.parse(saved);
@@ -89,9 +91,4 @@ ngOnDestroy() {
     filterPen: this.filterPen
   }));
 }
-
-trackByTag(index: number, cow: Cow) {
-  return cow.tag;
-}
-
 }
