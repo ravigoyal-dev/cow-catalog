@@ -1,0 +1,83 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button [routerLink]="'/'">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <span>Cow Details</span>
+</mat-toolbar>
+
+<div class="container" *ngIf="cow as c">
+
+  <!-- Header Card -->
+  <mat-card class="header-card">
+    <div class="header-content">
+      <div>
+        <h1 class="cow-title">Cow {{ c.tag }}</h1>
+        <span class="status-badge"
+              [ngClass]="getStatusClass(c.status)">
+          {{ c.status }}
+        </span>
+      </div>
+    </div>
+  </mat-card>
+
+  <!-- Details Section -->
+  <mat-card class="details-card">
+    <h2>Information</h2>
+
+    <div class="details-grid">
+
+      <div class="detail-item">
+        <span class="label">Sex</span>
+        <span class="value">{{ c.sex }}</span>
+      </div>
+
+      <div class="detail-item">
+        <span class="label">Pen</span>
+        <span class="value">{{ c.pen }}</span>
+      </div>
+
+      <div class="detail-item">
+        <span class="label">Weight</span>
+        <span class="value">{{ c.weight || 'N/A' }} kg</span>
+      </div>
+
+    </div>
+  </mat-card>
+
+  <!-- Events Section -->
+  <mat-card class="events-card">
+    <h2>Events</h2>
+
+    <div class="table-responsive">
+
+      <table mat-table [dataSource]="c.events || []" class="mat-elevation-z1">
+
+        <!-- Date -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let event">
+            {{ event.date | date:'mediumDate' }}
+          </td>
+        </ng-container>
+
+        <!-- Description -->
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef>Description</th>
+          <td mat-cell *matCellDef="let event">
+            {{ event.description }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="eventColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: eventColumns;"></tr>
+
+      </table>
+
+      <div class="no-events" *ngIf="!c.events?.length">
+        No events available
+      </div>
+
+    </div>
+  </mat-card>
+
+</div>

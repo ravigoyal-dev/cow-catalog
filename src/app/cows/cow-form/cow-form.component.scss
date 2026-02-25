@@ -1,0 +1,45 @@
+.cow-form-card {
+  max-width: 800px;
+  width: 100%;
+  margin: 20px auto;
+  display: flex; 
+  justify-content: center; 
+  padding: 1rem;
+}
+
+.cow-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.form-field {
+  flex: 1;
+  min-width: 200px;
+}
+
+.full-width {
+  flex: 1 1 100%;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+
+}
+
+mat-card-title {
+  display: block;
+  text-align: center;   
+  margin-top: 16px;     
+  margin-bottom: 20px;  
+  font-size: 22px;
+  font-weight: 600;
+}

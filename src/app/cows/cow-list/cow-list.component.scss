@@ -1,0 +1,86 @@
+.container {
+  padding: 20px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.filter-card {
+  margin-bottom: 20px;
+}
+
+.filter-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.filter-row mat-form-field {
+  flex: 1;
+  min-width: 200px;
+}
+
+.table-card {
+  overflow: hidden;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+}
+
+tr {
+  cursor: pointer;
+}
+
+tr:hover {
+  background: #f5f5f5;
+}
+
+/* Status colors */
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+}
+
+.status-badge.Active {
+  background-color: #4caf50;
+}
+
+.status-badge.Deceased {
+  background-color: #f44336;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .filter-row {
+    flex-direction: column;
+  }
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+}
+
+.status-active {
+  background-color: #4caf50;
+}
+
+.status-treatment {
+  background-color: #ff9800;
+}
+
+.status-deceased {
+  background-color: #f44336;
+}

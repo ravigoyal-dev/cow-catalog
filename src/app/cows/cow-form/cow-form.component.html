@@ -1,0 +1,48 @@
+<mat-card class="cow-form-card">
+  <mat-card-title>Add Cow</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="cowForm" (ngSubmit)="onSubmit()" class="cow-form">
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Ear Tag</mat-label>
+          <input matInput formControlName="tag" placeholder="Enter tag">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Sex</mat-label>
+          <mat-select formControlName="sex">
+            <mat-option value="Male">Male</mat-option>
+            <mat-option value="Female">Female</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Pen</mat-label>
+          <input matInput formControlName="pen" placeholder="Enter pen">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="status">
+            <mat-option value="Active">Active</mat-option>
+            <mat-option value="In Treatment">In Treatment</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field full-width">
+          <mat-label>Weight (kg)</mat-label>
+          <input matInput type="number" formControlName="weight" placeholder="Enter weight">
+        </mat-form-field>
+      </div>
+
+      <div class="form-actions">
+        <button mat-raised-button color="accent" type="button" [routerLink]="'/'"> Back </button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="cowForm.invalid">Add Cow</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
